@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenny's Italian Kitchen | Dallas, TX | Southern Italian Since 2010</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+/* ────────────────────────────────
+   DESIGN TOKENS
+──────────────────────────────── */
+:root {
+  --ink:    #0d0906;
+  --dark:   #140e07;
+  --brown:  #231200;
+  --red:    #8c1c1c;
+  --red2:   #a82424;
+  --gold:   #b8892a;
+  --gold2:  #d4a848;
+  --gold3:  #f2cb7e;
+  --cream:  #faf5ea;
+  --cream2: #f0e6cc;
+  --tan:    #e8d8b4;
+  --muted:  #896840;
+  --white:  #fffef8;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ────────────────────────────────
+   NAVIGATION
+──────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 44px; height: 72px;
+  background: rgba(13,9,6,0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(184,137,42,0.22);
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 44px; object-fit: contain; }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.68); text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--gold3); }
+.nav-reserve {
+  border: 1px solid var(--gold) !important;
+  color: var(--gold3) !important; padding: 9px 22px !important;
+  transition: all .2s !important;
+}
+.nav-reserve:hover { background: var(--gold) !important; color: #000 !important; }
+@media (max-width: 860px) { .nav-links { display: none; } nav { padding: 0 20px; } }
+
+/* ────────────────────────────────
+   HERO — real kennysitalian.com photo
+──────────────────────────────── */
+.hero {
+  position: relative; height: 100vh; min-height: 680px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  background: url('https://kennysitalian.com/wp-content/uploads/2022/07/kennys-header-kik.jpg') center 38% / cover no-repeat;
+  animation: kennyZoom 24s ease-in-out infinite alternate;
+}
+@keyframes kennyZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+.hero-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(170deg,
+    rgba(13,9,6,.62) 0%,
+    rgba(13,9,6,.18) 42%,
+    rgba(13,9,6,.72) 86%,
+    rgba(13,9,6,.94) 100%);
+}
+/* warm tinted left glow */
+.hero-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 15% 55%, rgba(140,28,28,.28) 0%, transparent 58%);
+}
+.hero-content {
+  position: relative; z-index: 2; padding: 0 20px;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* staggered reveal */
+.hero-content > * { opacity: 0; animation: riseIn .9s ease forwards; }
+.hero-content > *:nth-child(1) { animation-delay: .1s; }
+.hero-content > *:nth-child(2) { animation-delay: .25s; }
+.hero-content > *:nth-child(3) { animation-delay: .4s; }
+.hero-content > *:nth-child(4) { animation-delay: .5s; }
+.hero-content > *:nth-child(5) { animation-delay: .62s; }
+.hero-content > *:nth-child(6) { animation-delay: .74s; }
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  font-size: .62rem; letter-spacing: 5.5px; text-transform: uppercase;
+  color: var(--gold2); margin-bottom: 18px;
+}
+.hero-eyebrow i { display: block; width: 44px; height: 1px; background: var(--gold); }
+
+.hero-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(4.5rem, 11vw, 9rem);
+  color: var(--gold3); line-height: .98;
+  text-shadow: 0 6px 48px rgba(184,137,42,.38);
+  margin-bottom: 6px;
+}
+.hero-subhead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(.95rem, 2.2vw, 1.4rem);
+  font-weight: 300; letter-spacing: 7px; text-transform: uppercase;
+  color: rgba(255,255,255,.82); margin-bottom: 26px;
+}
+.hero-rule {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+}
+.hero-rule::before, .hero-rule::after { content: ''; display: block; width: 70px; height: 1px; background: rgba(184,137,42,.45); }
+.hero-rule span { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .95rem; color: rgba(255,255,255,.42); }
+
+.hero-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-style: italic; font-weight: 300;
+  color: rgba(255,255,255,.76); max-width: 560px; line-height: 1.65; margin-bottom: 38px;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+/* CTA buttons */
+.btn-solid {
+  background: var(--gold); color: #000;
+  font-size: .68rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 16px 40px; text-decoration: none;
+  transition: background .2s, transform .15s;
+  display: inline-block;
+}
+.btn-solid:hover { background: var(--gold2); transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: #fff;
+  border: 1px solid rgba(255,255,255,.38);
+  font-size: .68rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  padding: 16px 40px; text-decoration: none;
+  transition: border-color .2s, color .2s, transform .15s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--gold3); color: var(--gold3); transform: translateY(-2px); }
+
+/* scroll cue */
+.hero-scroll {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.hero-scroll span { font-size: .56rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.32); }
+.hero-scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(184,137,42,.65), transparent); animation: breathe 2.2s ease-in-out infinite; }
+@keyframes breathe { 0%,100%{ opacity:.35; } 50%{ opacity:1; } }
+
+/* ────────────────────────────────
+   TICKER STRIP
+──────────────────────────────── */
+.ticker { background: var(--red); padding: 14px 0; overflow: hidden; }
+.ticker-track {
+  display: flex; width: max-content;
+  animation: tickScroll 30s linear infinite;
+}
+@keyframes tickScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tick-item {
+  display: flex; align-items: center; gap: 12px; padding: 0 52px;
+  font-size: .64rem; letter-spacing: 3.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.88); white-space: nowrap;
+}
+.tick-item::after { content: '✦'; color: rgba(255,255,255,.38); font-size: .5rem; }
+
+/* ────────────────────────────────
+   SHARED LAYOUT
+──────────────────────────────── */
+section { padding: 96px 24px; }
+.wrap { max-width: 1140px; margin: 0 auto; }
+
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-size: .6rem; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.eyebrow::after { content: ''; flex: 1; max-width: 55px; height: 1px; background: var(--gold); }
+
+h2.heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 600; line-height: 1.06;
+  color: var(--brown);
+}
+h2.heading em { font-style: italic; color: var(--red); }
+h2.heading.on-dark { color: var(--cream); }
+h2.heading.on-dark em { color: var(--gold3); }
+
+/* ────────────────────────────────
+   STORY — real front-of-house photo
+──────────────────────────────── */
+.story { background: var(--white); }
+.story-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px;
+  align-items: center; margin-top: 60px;
+}
+@media (max-width: 860px) { .story-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* Photo mosaic built from their real images */
+.story-photos {
+  position: relative; height: 540px;
+}
+.story-photos img {
+  position: absolute; object-fit: cover;
+  outline: 5px solid var(--white);
+  box-shadow: 0 18px 56px rgba(35,18,0,.22);
+}
+.sp-main {  /* kik-front exterior */
+  width: 78%; height: 72%;
+  top: 0; left: 0;
+}
+.sp-accent { /* bar photo */
+  width: 56%; height: 48%;
+  bottom: 0; right: 0;
+  outline-color: var(--gold);
+}
+.sp-badge {
+  position: absolute; bottom: 50px; left: -12px; z-index: 3;
+  background: var(--red); color: #fff;
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .96rem;
+  padding: 14px 22px;
+  box-shadow: 5px 5px 24px rgba(0,0,0,.28);
+}
+@media (max-width: 860px) { .story-photos { height: 380px; } .sp-badge { bottom: 10px; left: 0; } }
+
+.story-body p {
+  font-size: .94rem; line-height: 1.92; color: var(--muted); margin-bottom: 15px;
+}
+.story-quote {
+  border-left: 3px solid var(--gold); padding-left: 20px; margin: 26px 0;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1.15rem; color: var(--brown); line-height: 1.6;
+}
+.stats-row { display: flex; gap: 36px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--cream2); margin-top: 24px; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--red); line-height: 1; }
+.stat-lbl { font-size: .62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+
+/* ────────────────────────────────
+   FULL-BLEED DISH PHOTO — real dish-61
+──────────────────────────────── */
+.dish-break {
+  position: relative; height: 480px; overflow: hidden;
+}
+.dish-break-img {
+  position: absolute; inset: 0;
+  background: url('https://kennysitalian.com/wp-content/uploads/2011/12/dish-61.jpg') center center / cover no-repeat;
+  filter: brightness(.78) contrast(1.05);
+  animation: kennyZoom2 20s ease-in-out infinite alternate;
+}
+@keyframes kennyZoom2 { from { transform: scale(1); } to { transform: scale(1.06); } }
+.dish-break-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(13,9,6,.82) 0%, rgba(13,9,6,.2) 55%, rgba(13,9,6,.04) 100%);
+  display: flex; align-items: center; padding: 0 80px;
+}
+@media (max-width: 680px) { .dish-break-overlay { padding: 0 28px; } }
+.dish-break-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5.5vw, 4rem); font-weight: 600;
+  color: #fff; line-height: 1.1; margin-bottom: 16px;
+}
+.dish-break-text h2 em { font-style: italic; color: var(--gold3); }
+.dish-break-text p {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(255,255,255,.7);
+  max-width: 420px; line-height: 1.65; margin-bottom: 28px;
+}
+
+/* ────────────────────────────────
+   MENU SECTION
+──────────────────────────────── */
+.menu-section { background: var(--dark); }
+.menu-tabs-row {
+  display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,.1);
+  margin-top: 40px; overflow-x: auto;
+}
+.mtab {
+  font-size: .68rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.46); padding: 13px 28px; cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap;
+  transition: color .2s;
+}
+.mtab.active { color: var(--gold3); border-bottom-color: var(--gold2); }
+.mtab:hover { color: rgba(255,255,255,.8); }
+
+.mpane { display: none; }
+.mpane.active { display: block; padding-top: 44px; }
+
+.mcols { display: grid; grid-template-columns: 1fr 1fr; gap: 44px 64px; }
+@media (max-width: 680px) { .mcols { grid-template-columns: 1fr; gap: 28px; } }
+
+.mcat { margin-bottom: 34px; }
+.mcat-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-style: italic;
+  color: var(--gold2); border-bottom: 1px solid rgba(212,168,72,.25);
+  padding-bottom: 7px; margin-bottom: 14px;
+}
+.mnote { font-size: .72rem; font-style: italic; color: rgba(255,255,255,.35); margin-bottom: 12px; }
+
+.mitem {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.mname { font-size: .86rem; color: rgba(255,255,255,.86); font-weight: 500; }
+.mdesc { font-size: .72rem; color: rgba(255,255,255,.38); font-style: italic; margin-top: 2px; }
+.mprice {
+  font-size: .83rem; color: var(--gold2); font-weight: 600;
+  white-space: nowrap; margin-left: 14px; flex-shrink: 0;
+}
+
+/* ────────────────────────────────
+   SPECIALS BAR
+──────────────────────────────── */
+.specials { background: var(--brown); padding: 36px 24px; text-align: center; }
+.specials h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-style: italic;
+  color: var(--gold3); margin-bottom: 6px;
+}
+.specials p { font-size: .83rem; color: rgba(255,255,255,.55); margin-bottom: 22px; }
+.spec-pills { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.spec-pill {
+  border: 1px solid rgba(212,168,72,.35); padding: 12px 26px;
+  font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7);
+}
+.spec-pill strong { display: block; color: var(--gold3); font-size: .84rem; font-family: 'Cormorant Garamond', serif; font-style: italic; margin-bottom: 2px; font-weight: 400; }
+
+/* ────────────────────────────────
+   BAR / DRINKS  — bar1.jpg
+──────────────────────────────── */
+.bar-section { background: var(--white); }
+.bar-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  align-items: start; margin-top: 52px;
+}
+@media (max-width: 860px) { .bar-grid { grid-template-columns: 1fr; gap: 40px; } }
+.bar-photo-wrap { position: relative; }
+.bar-photo-wrap img { width: 100%; height: 420px; object-fit: cover; object-position: center 30%; box-shadow: 0 20px 60px rgba(35,18,0,.2); }
+.bar-badge {
+  position: absolute; bottom: -18px; right: -18px;
+  background: var(--dark); border: 1px solid var(--gold);
+  padding: 18px 22px; text-align: center;
+}
+.bar-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--gold3); line-height: 1; }
+.bar-badge-lbl { font-size: .6rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.45); margin-top: 2px; }
+
+.drinks-col h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.06rem; font-style: italic;
+  color: var(--red); border-bottom: 1px solid rgba(140,28,28,.2);
+  padding-bottom: 8px; margin-bottom: 14px; margin-top: 26px;
+}
+.drinks-col h3:first-child { margin-top: 0; }
+.drink { padding: 7px 0; border-bottom: 1px solid rgba(35,18,0,.08); }
+.drink-name { font-size: .85rem; font-weight: 600; color: var(--brown); }
+.drink-desc { font-size: .73rem; color: var(--muted); font-style: italic; margin-top: 1px; line-height: 1.45; }
+
+/* ────────────────────────────────
+   REVIEWS
+──────────────────────────────── */
+.reviews-section { background: var(--cream2); }
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 48px;
+}
+@media (max-width: 860px) { .reviews-grid { grid-template-columns: 1fr; } }
+.rcard {
+  background: var(--white); padding: 30px 24px; position: relative;
+  transition: transform .2s, box-shadow .2s;
+}
+.rcard:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(35,18,0,.1); }
+.rcard::before {
+  content: '\201C'; font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem; color: var(--gold2); opacity: .22;
+  position: absolute; top: 10px; left: 18px; line-height: 1;
+}
+.stars { color: #e8a200; font-size: .95rem; letter-spacing: 2px; margin-bottom: 10px; }
+.rtext { font-size: .85rem; line-height: 1.78; color: var(--muted); margin-bottom: 18px; position: relative; z-index: 1; }
+.rauthor { display: flex; align-items: center; gap: 11px; }
+.rav { width: 36px; height: 36px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 700; color: #fff; font-size: .95rem; flex-shrink: 0; }
+.rname { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--brown); }
+.rsrc { font-size: .68rem; color: var(--muted); font-style: italic; }
+
+.rating-row {
+  display: flex; gap: 0; justify-content: center; flex-wrap: wrap;
+  margin-top: 44px; border: 1px solid var(--tan); background: var(--white);
+}
+.rstat { text-align: center; padding: 20px 36px; border-right: 1px solid var(--tan); }
+.rstat:last-child { border-right: none; }
+.rstat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--red); line-height: 1; }
+.rstat-lbl { font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+
+/* ────────────────────────────────
+   TEAM — Liz Mardeda photo
+──────────────────────────────── */
+.team-section { background: var(--dark); }
+.team-grid { display: grid; grid-template-columns: 340px 1fr; gap: 64px; align-items: center; margin-top: 52px; }
+@media (max-width: 860px) { .team-grid { grid-template-columns: 1fr; gap: 36px; } }
+.team-img-wrap { position: relative; }
+.team-img-wrap img { width: 280px; height: 280px; object-fit: cover; border-radius: 50%; border: 5px solid var(--gold); box-shadow: 0 0 0 2px rgba(184,137,42,.25); display: block; margin: 0 auto; }
+.team-body p { font-size: .94rem; line-height: 1.88; color: rgba(255,255,255,.58); margin-bottom: 14px; }
+.team-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--gold3); margin-bottom: 3px; }
+.team-title { font-size: .66rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.team-email a { color: var(--gold2); text-decoration: none; font-size: .85rem; }
+.team-email a:hover { color: var(--gold3); }
+
+/* ────────────────────────────────
+   CATERING & TAKE & BAKE
+──────────────────────────────── */
+.cater-section { background: var(--cream); }
+.cater-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 52px; }
+@media (max-width: 860px) { .cater-grid { grid-template-columns: 1fr; gap: 36px; } }
+.cater-card {
+  background: var(--white); padding: 36px 32px;
+  border-top: 4px solid var(--red);
+  box-shadow: 0 8px 36px rgba(35,18,0,.07);
+}
+.cater-card h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic;
+  color: var(--brown); margin-bottom: 14px;
+}
+.cater-card p { font-size: .88rem; line-height: 1.82; color: var(--muted); margin-bottom: 14px; }
+.cater-price {
+  font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700;
+  color: var(--red); margin: 14px 0 4px;
+}
+.cater-price-note { font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+.cater-options { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+.cater-opt {
+  border: 1px solid var(--tan); padding: 7px 16px;
+  font-size: .75rem; letter-spacing: 1px; color: var(--brown);
+}
+.cater-contact { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--cream2); }
+.cater-contact-item { display: flex; align-items: center; gap: 10px; font-size: .83rem; color: var(--muted); padding: 6px 0; }
+.cater-contact-item a { color: var(--muted); text-decoration: none; }
+.cater-contact-item a:hover { color: var(--red); }
+
+/* ────────────────────────────────
+   LOCATION & HOURS  — kik-front.jpg
+──────────────────────────────── */
+.location-section { background: var(--ink); }
+.location-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; margin-top: 52px; }
+@media (max-width: 860px) { .location-grid { grid-template-columns: 1fr; gap: 36px; } }
+.loc-block h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic;
+  color: var(--gold2); padding-bottom: 10px;
+  border-bottom: 1px solid rgba(212,168,72,.25); margin-bottom: 18px;
+}
+.hours-row {
+  display: flex; justify-content: space-between; padding: 7px 0;
+  font-size: .83rem; border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.hours-row .day { color: rgba(255,255,255,.48); }
+.hours-row .time { color: rgba(255,255,255,.84); font-weight: 500; }
+.cinfo-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+  font-size: .84rem; color: rgba(255,255,255,.62);
+}
+.cinfo-item a { color: rgba(255,255,255,.62); text-decoration: none; }
+.cinfo-item a:hover { color: var(--gold3); }
+.cinfo-ico {
+  width: 28px; height: 28px; background: rgba(184,137,42,.12);
+  border: 1px solid rgba(184,137,42,.28); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .78rem; flex-shrink: 0; margin-top: 1px;
+}
+.map-frame { width: 100%; height: 240px; border: none; filter: grayscale(22%) contrast(.9); margin-top: 8px; }
+
+/* ────────────────────────────────
+   FOOTER
+──────────────────────────────── */
+footer {
+  background: var(--dark); border-top: 2px solid var(--gold);
+  padding: 44px 24px; text-align: center;
+}
+.footer-logo img { height: 48px; margin-bottom: 10px; }
+.footer-script {
+  font-family: 'Great Vibes', cursive; font-size: 2.6rem; color: var(--gold3);
+  line-height: 1.1; margin-bottom: 6px;
+}
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: .9rem; color: rgba(255,255,255,.35); margin-bottom: 24px;
+}
+.footer-nav { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; list-style: none; margin-bottom: 22px; }
+.footer-nav a { font-size: .66rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.3); text-decoration: none; }
+.footer-nav a:hover { color: var(--gold2); }
+.footer-stjude {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(140,28,28,.18); border: 1px solid rgba(140,28,28,.4);
+  padding: 10px 22px; margin-bottom: 20px; font-size: .72rem; color: rgba(255,255,255,.5);
+}
+.footer-stjude span { color: #e06060; }
+.footer-copy { font-size: .68rem; color: rgba(255,255,255,.16); }
+
+/* ────────────────────────────────
+   SIBLING BRANDS
+──────────────────────────────── */
+.brands-bar {
+  background: var(--brown); padding: 28px 24px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.brands-bar span { font-size: .58rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-right: 8px; }
+.brands-bar img { height: 32px; object-fit: contain; opacity: .6; transition: opacity .2s; filter: brightness(2); }
+.brands-bar img:hover { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     NAVIGATION
+══════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://kennysitalian.com/wp-content/uploads/2020/05/italian-logo-200.png" alt="Kenny's Italian Kitchen" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#bar">Bar</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#location">Visit Us</a></li>
+    <li><a href="https://www.opentable.com/kennys-italian-kitchen" target="_blank" class="nav-reserve">Reserve</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════
+     HERO — kennys-header-kik.jpg
+══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i></i>Celebrating 14 Years · Dallas, Texas<i></i></div>
+    <div class="hero-script">Kenny's</div>
+    <div class="hero-subhead">Italian Kitchen</div>
+    <div class="hero-rule"><span>Southern Italian American</span></div>
+    <p class="hero-quote">"Every day is a holiday and every meal is a feast!"</p>
+    <div class="hero-btns">
+      <a href="https://www.opentable.com/kennys-italian-kitchen" target="_blank" class="btn-solid">Reserve a Table</a>
+      <a href="#menu" class="btn-outline">View the Menu</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="tick-item">Open Mon–Fri 11 AM – 10 PM</span>
+    <span class="tick-item">Sat & Sun Open at 4 PM</span>
+    <span class="tick-item">Martini Monday — $7 All Day</span>
+    <span class="tick-item">Happy Hour Mon–Fri · 2–7 PM</span>
+    <span class="tick-item">Grey Goose on Tap at 28°</span>
+    <span class="tick-item">Gluten Free Options Available</span>
+    <span class="tick-item">Take & Bake Pasta — $69.99 · Serves 4</span>
+    <span class="tick-item">Full Catering Division</span>
+    <span class="tick-item">(972) 661-9380</span>
+    <span class="tick-item">5100 Belt Line Rd Ste 764 · Dallas TX</span>
+    <!-- dupe for seamless loop -->
+    <span class="tick-item">Open Mon–Fri 11 AM – 10 PM</span>
+    <span class="tick-item">Sat & Sun Open at 4 PM</span>
+    <span class="tick-item">Martini Monday — $7 All Day</span>
+    <span class="tick-item">Happy Hour Mon–Fri · 2–7 PM</span>
+    <span class="tick-item">Grey Goose on Tap at 28°</span>
+    <span class="tick-item">Gluten Free Options Available</span>
+    <span class="tick-item">Take & Bake Pasta — $69.99 · Serves 4</span>
+    <span class="tick-item">Full Catering Division</span>
+    <span class="tick-item">(972) 661-9380</span>
+    <span class="tick-item">5100 Belt Line Rd Ste 764 · Dallas TX</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     OUR STORY — kik-front.jpg + bar1.jpg
+══════════════════════════════ -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="eyebrow">Our Story</div>
+    <h2 class="heading">A True <em>Neighborhood</em> Italian Joint</h2>
+
+    <div class="story-grid">
+      <!-- Real photos from kennysitalian.com -->
+      <div class="story-photos">
+        <img class="sp-main" src="https://kennysitalian.com/wp-content/uploads/2019/10/kik-front.jpg" alt="Kenny's Italian Kitchen exterior" />
+        <img class="sp-accent" src="https://kennysitalian.com/wp-content/uploads/2011/12/bar1.jpg" alt="Kenny's bar" />
+        <div class="sp-badge">Serving Dallas Since 2010</div>
+      </div>
+
+      <div class="story-body">
+        <p>Do you remember a time when restaurants didn't have "BS" split charges, 18% gratuity added, or ridiculous statements like "I'm sorry, that's our policy?" Welcome to Kenny's Italian Kitchen — a restaurant reminiscent of the way things used to be.</p>
+        <p>Modeled after the Little Italy neighborhoods of Boston, Philadelphia, and New York, Kenny's is decorated with red-checkered tablecloths, dark woods, and walls adorned with black-and-white photos of friends, family, and regular guests. You'll swear you just walked into a neighborhood joint in the Northeast.</p>
+        <div class="story-quote">"We make it our policy to have no policy. Every guest leaves happy — that's the only rule."</div>
+        <p>Chef <strong>Kenny Bowers</strong>, partners <strong>Bob Stegall</strong> and <strong>Clay McAfee</strong>, and Managing Partner <strong>Liz Mardeda</strong> have created a place where the food, the people, and the atmosphere make every visit feel like home.</p>
+        <div class="stats-row">
+          <div><div class="stat-num">14+</div><div class="stat-lbl">Years in Dallas</div></div>
+          <div><div class="stat-num">4.6★</div><div class="stat-lbl">Google Rating</div></div>
+          <div><div class="stat-num">3,500+</div><div class="stat-lbl">Glowing Reviews</div></div>
+          <div><div class="stat-num">70%</div><div class="stat-lbl">Gluten-Free Capable</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FULL-BLEED DISH — dish-61.jpg
+══════════════════════════════ -->
+<div class="dish-break">
+  <div class="dish-break-img"></div>
+  <div class="dish-break-overlay">
+    <div class="dish-break-text">
+      <h2>Classic Italian<br><em>Done Right</em></h2>
+      <p>From Veal Parmigiana to East Coast Linguini, every plate is made with care, quality ingredients, and a love for the craft.</p>
+      <a href="#menu" class="btn-solid">Explore the Full Menu</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     MENU
+══════════════════════════════ -->
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold2)">The Menu</div>
+    <h2 class="heading on-dark">Lunch, Dinner <em>&amp; More</em></h2>
+    <p style="color:rgba(255,255,255,.38);font-size:.8rem;font-style:italic;margin-top:8px">Most dishes modified upon request · GF = Gluten Free available · WW = Whole Wheat</p>
+
+    <div class="menu-tabs-row">
+      <div class="mtab active" onclick="showTab('lunch')">Lunch</div>
+      <div class="mtab" onclick="showTab('dinner')">Dinner</div>
+      <div class="mtab" onclick="showTab('wine')">Wine &amp; Bar</div>
+      <div class="mtab" onclick="showTab('takebake')">Take &amp; Bake</div>
+    </div>
+
+    <!-- ── LUNCH ── -->
+    <div class="mpane active" id="pane-lunch">
+      <div class="mcols">
+        <div>
+          <div class="mcat">
+            <div class="mcat-title">Appetizers</div>
+            <div class="mitem"><div><div class="mname">Garlic Cheese Bread</div></div><div class="mprice">$8.99</div></div>
+            <div class="mitem"><div><div class="mname">Bruschetta</div><div class="mdesc">Tomatoes, fresh basil, kalamata olives, roasted garlic, balsamic vinegar</div></div><div class="mprice">$9.99</div></div>
+            <div class="mitem"><div><div class="mname">Prosciutto Wrapped Fried Mozzarella</div><div class="mdesc">Marsala wine sauce, red sauce</div></div><div class="mprice">$10.99</div></div>
+            <div class="mitem"><div><div class="mname">Crispy Arancini</div><div class="mdesc">Parmesan herb risotto, panko crust, basil pesto aioli, red sauce</div></div><div class="mprice">$12.99</div></div>
+            <div class="mitem"><div><div class="mname">Kenny's "Midnight" Meatballs</div><div class="mdesc">Mozzarella, red sauce</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Mussels</div><div class="mdesc">Steamed — red sauce or garlic butter &amp; white wine</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Fried Calamari</div><div class="mdesc">Red sauce, spicy lemon garlic aioli</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Crab Stuffed Mushrooms</div><div class="mdesc">Bell pepper, bacon, herb parmesan breadcrumbs, lemon butter caper sauce</div></div><div class="mprice">$14.99</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Salads</div>
+            <div class="mitem"><div><div class="mname">Caesar</div><div class="mdesc">Shaved parmesan, polenta croutons</div></div><div class="mprice">$6.99</div></div>
+            <div class="mitem"><div><div class="mname">House</div><div class="mdesc">Romaine, tomatoes, red onion, cucumber, pepperoni, parmesan</div></div><div class="mprice">$6.99</div></div>
+            <div class="mitem"><div><div class="mname">Blue Cheese</div><div class="mdesc">Iceberg, tomato, red onion, smoked bacon, creamy blue cheese dressing</div></div><div class="mprice">$7.99</div></div>
+            <div class="mitem"><div><div class="mname">Italian Chopped</div><div class="mdesc">Iceberg, hearts of palm, artichoke, salami, provolone, pepperoni</div></div><div class="mprice">$7.99</div></div>
+            <div class="mitem"><div><div class="mname">Spinach &amp; Salmon</div><div class="mdesc">Roasted walnuts, tomatoes, smoked bacon, blue cheese, Italian dressing</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Italian Cobb</div><div class="mdesc">Chicken, shrimp, romaine, tomatoes, egg, blue cheese, salami, bacon, olives</div></div><div class="mprice">$16.99</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Italian Style Sandwiches</div>
+            <div class="mnote">Served on La Spiga focaccia with parmesan chips</div>
+            <div class="mitem"><div><div class="mname">"Midnight" Meatball &amp; Italian Sausage</div><div class="mdesc">Provolone, red sauce</div></div><div class="mprice">$15.99</div></div>
+            <div class="mitem"><div><div class="mname">Grilled Chicken</div><div class="mdesc">Basil pesto, provolone, arugula, tomato, red onion, mayo</div></div><div class="mprice">$15.99</div></div>
+            <div class="mitem"><div><div class="mname">Italian Club</div><div class="mdesc">Genoa salami, ham, pepperoni, provolone, lettuce, tomato, pesto</div></div><div class="mprice">$15.99</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="mcat">
+            <div class="mcat-title">Pasta</div>
+            <div class="mitem"><div><div class="mname">Spaghetti &amp; "Midnight" Meatball or Sausage</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Fettuccine Alfredo</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Kenny's Four Cheese Ravioli</div><div class="mdesc">Red sauce or alfredo</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Mushroom Ravioli</div><div class="mdesc">Smoked gouda cream, ham, white truffle oil</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Bolognese</div><div class="mdesc">Classic meat sauce, bowtie pasta, shaved parmesan</div></div><div class="mprice">$15.99</div></div>
+            <div class="mitem"><div><div class="mname">Gnocchi Asiago</div><div class="mdesc">Chicken, artichokes, mushrooms, tomatoes, asiago cream, basil pesto</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Baked Ziti</div><div class="mdesc">Meatballs, sausage, ricotta, mozzarella, red sauce &amp; alfredo</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Lasagna</div><div class="mdesc">Ground beef, ricotta, parmesan and mozzarella cheeses, red sauce</div></div><div class="mprice">$17.99</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Lunch Entrées</div>
+            <div class="mnote">Served with spaghetti, olive oil &amp; garlic unless otherwise noted</div>
+            <div class="mitem"><div><div class="mname">Chicken Picatta</div><div class="mdesc">White wine, lemon butter caper sauce</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Chicken Marsala</div><div class="mdesc">Sautéed mushrooms, marsala wine sauce</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Chicken or Eggplant Parmigiana</div><div class="mdesc">Mozzarella, red sauce</div></div><div class="mprice">$17.99</div></div>
+            <div class="mitem"><div><div class="mname">Chicken Scaloppini</div><div class="mdesc">Artichokes, mushrooms, capers, smoked bacon, white wine lemon butter, angel hair</div></div><div class="mprice">$17.99</div></div>
+            <div class="mitem"><div><div class="mname">Shrimp Scampi</div><div class="mdesc">Garlic butter, white wine, mushrooms, tomatoes, angel hair</div></div><div class="mprice">$17.99</div></div>
+            <div class="mitem"><div><div class="mname">Sicilian Shrimp &amp; Fettuccine</div><div class="mdesc">Spicy parmesan cream, roasted tomato, spinach, mushroom</div></div><div class="mprice">$18.99</div></div>
+            <div class="mitem"><div><div class="mname">Salmon</div><div class="mdesc">Artichoke hearts, tomatoes, mushrooms, lemon butter, basil pesto, angel hair</div></div><div class="mprice">$18.99</div></div>
+            <div class="mitem"><div><div class="mname">Veal Marsala</div><div class="mdesc">Sautéed mushrooms, marsala wine sauce</div></div><div class="mprice">$19.99</div></div>
+            <div class="mitem"><div><div class="mname">Veal Picatta</div><div class="mdesc">White wine, lemon butter caper sauce</div></div><div class="mprice">$19.99</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /lunch -->
+
+    <!-- ── DINNER ── -->
+    <div class="mpane" id="pane-dinner">
+      <div class="mcols">
+        <div>
+          <div class="mcat">
+            <div class="mcat-title">Appetizers</div>
+            <div class="mitem"><div><div class="mname">Garlic Cheese Bread</div></div><div class="mprice">$8.99</div></div>
+            <div class="mitem"><div><div class="mname">Bruschetta</div><div class="mdesc">Tomatoes, fresh basil, kalamata olives, roasted garlic, balsamic vinegar</div></div><div class="mprice">$9.99</div></div>
+            <div class="mitem"><div><div class="mname">Prosciutto Wrapped Fried Mozzarella</div></div><div class="mprice">$10.99</div></div>
+            <div class="mitem"><div><div class="mname">Crispy Arancini</div><div class="mdesc">Parmesan herb risotto, panko crust, basil pesto aioli</div></div><div class="mprice">$12.99</div></div>
+            <div class="mitem"><div><div class="mname">Kenny's "Midnight" Meatballs</div><div class="mdesc">Mozzarella, red sauce</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Mussels</div><div class="mdesc">Steamed — red sauce or garlic butter &amp; white wine</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Fried Calamari</div><div class="mdesc">Red sauce, spicy lemon garlic aioli</div></div><div class="mprice">$14.99</div></div>
+            <div class="mitem"><div><div class="mname">Crab Stuffed Mushrooms</div></div><div class="mprice">$14.99</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Salads</div>
+            <div class="mitem"><div><div class="mname">Caesar</div><div class="mdesc">Shaved parmesan, polenta croutons</div></div><div class="mprice">$6.99</div></div>
+            <div class="mitem"><div><div class="mname">House</div></div><div class="mprice">$6.99</div></div>
+            <div class="mitem"><div><div class="mname">Italian Chopped</div></div><div class="mprice">$7.99</div></div>
+            <div class="mitem"><div><div class="mname">Blue Cheese</div></div><div class="mprice">$7.99</div></div>
+            <div class="mitem"><div><div class="mname">Liz's Big Greek Salad</div><div class="mdesc">Grilled chicken, iceberg, feta, olives, tomato, cucumber, onion, pepperoncini, Greek dressing</div></div><div class="mprice">$17.99</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Pasta</div>
+            <div class="mitem"><div><div class="mname">Spaghetti &amp; Meatballs or Sausage</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Fettuccine Alfredo</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Bolognese</div><div class="mdesc">Classic meat sauce, bowtie pasta, shaved parmesan</div></div><div class="mprice">$16.99</div></div>
+            <div class="mitem"><div><div class="mname">Kenny's Four Cheese Ravioli</div><div class="mdesc">Red sauce or alfredo</div></div><div class="mprice">$17.99</div></div>
+            <div class="mitem"><div><div class="mname">Mushroom Ravioli</div><div class="mdesc">Smoked gouda cream, ham, white truffle oil</div></div><div class="mprice">$17.99</div></div>
+            <div class="mitem"><div><div class="mname">Fettuccine Carbonara</div><div class="mdesc">Smoked bacon, fresh egg, parmesan, romano, cream</div></div><div class="mprice">$17.99</div></div>
+            <div class="mitem"><div><div class="mname">Baked Ziti</div><div class="mdesc">Meatballs, sausage, ricotta, mozzarella, red sauce &amp; alfredo</div></div><div class="mprice">$18.99</div></div>
+            <div class="mitem"><div><div class="mname">Gnocchi Asiago</div></div><div class="mprice">$18.99</div></div>
+            <div class="mitem"><div><div class="mname">Lasagna</div><div class="mdesc">Ground beef, ricotta, parmesan and mozzarella, red sauce</div></div><div class="mprice">$19.99</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="mcat">
+            <div class="mcat-title">Chicken</div>
+            <div class="mnote">Served with spaghetti, olive oil &amp; garlic unless otherwise noted</div>
+            <div class="mitem"><div><div class="mname">Chicken Marsala</div><div class="mdesc">Sautéed mushrooms, marsala wine sauce</div></div><div class="mprice">$22.99</div></div>
+            <div class="mitem"><div><div class="mname">Chicken Picatta</div><div class="mdesc">White wine, lemon butter caper sauce</div></div><div class="mprice">$22.99</div></div>
+            <div class="mitem"><div><div class="mname">Chicken or Eggplant Parmigiana</div><div class="mdesc">Mozzarella, red sauce</div></div><div class="mprice">$22.99</div></div>
+            <div class="mitem"><div><div class="mname">Chicken Scaloppini</div><div class="mdesc">Artichokes, mushrooms, capers, smoked bacon, white wine lemon butter, angel hair</div></div><div class="mprice">$22.99</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Veal &amp; Steak</div>
+            <div class="mitem"><div><div class="mname">Veal Marsala</div></div><div class="mprice">$24.99</div></div>
+            <div class="mitem"><div><div class="mname">Veal Picatta</div></div><div class="mprice">$24.99</div></div>
+            <div class="mitem"><div><div class="mname">Veal Osso Bucco</div><div class="mdesc">Braised veal shank, natural jus, mushrooms, parmesan risotto</div></div><div class="mprice">$26.99</div></div>
+            <div class="mitem"><div><div class="mname">Kenny's "Bone In" Veal Parmigiana</div><div class="mdesc">Mozzarella, red sauce</div></div><div class="mprice">$26.99</div></div>
+            <div class="mitem"><div><div class="mname">8 oz Filet Mignon</div><div class="mdesc">Sautéed garlic mushrooms, parmesan risotto</div></div><div class="mprice">$39.99</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Seafood</div>
+            <div class="mitem"><div><div class="mname">East Coast Linguini</div><div class="mdesc">Clams, mussels, calamari, white wine, garlic, basil, roasted tomato</div></div><div class="mprice">$23.99</div></div>
+            <div class="mitem"><div><div class="mname">Salmon</div><div class="mdesc">Artichokes, tomatoes, mushrooms, lemon butter, basil pesto, angel hair</div></div><div class="mprice">$24.99</div></div>
+            <div class="mitem"><div><div class="mname">Shrimp Scampi</div><div class="mdesc">Garlic butter, white wine, mushrooms, tomatoes, angel hair</div></div><div class="mprice">$24.99</div></div>
+            <div class="mitem"><div><div class="mname">Sicilian Shrimp &amp; Fettuccine</div><div class="mdesc">Spicy parmesan cream, roasted tomato, spinach, mushroom</div></div><div class="mprice">$25.99</div></div>
+            <div class="mitem"><div><div class="mname">Seafood Fra-Diavolo</div><div class="mdesc">Sea scallops, shrimp, clams, mussels, white wine, spicy garlicky red sauce, linguini</div></div><div class="mprice">$29.99</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /dinner -->
+
+    <!-- ── WINE & BAR ── -->
+    <div class="mpane" id="pane-wine">
+      <div class="mcols">
+        <div>
+          <div class="mcat">
+            <div class="mcat-title">Italian Kitchen Specialties</div>
+            <div class="mitem"><div><div class="mname">Peartini</div><div class="mdesc">Grey Goose La Poire, St. Germain, Lemon Juice</div></div></div>
+            <div class="mitem"><div><div class="mname">Leisure Time</div><div class="mdesc">Cazadores, Orange, Lime Juice, Agave, Mango, Pineapple</div></div></div>
+            <div class="mitem"><div><div class="mname">Golden Goose 75</div><div class="mdesc">Grey Goose Strawberry Lemongrass, Lemon Juice, Simple Syrup, Prosecco</div></div></div>
+            <div class="mitem"><div><div class="mname">Bellini Martini</div><div class="mdesc">Bacardi, Peach Schnapps, Peach Monin, Prosecco, Orange Juice</div></div></div>
+            <div class="mitem"><div><div class="mname">Italian Margarita</div><div class="mdesc">Cazadores, Amaretto, Limoncello, Agave, Lime</div></div></div>
+            <div class="mitem"><div><div class="mname">Sapphire 75</div><div class="mdesc">Bombay Sapphire, Lemon Juice, Simple Syrup, Champagne</div></div></div>
+            <div class="mitem"><div><div class="mname">Lockwood Lemonade</div><div class="mdesc">Lockwood Hibiscus Vodka, St. Germain, Basil, Lemonade, Lime, Champagne</div></div></div>
+            <div class="mitem"><div><div class="mname">Angel's Envy Manhattan</div><div class="mdesc">Angel's Envy Bourbon, Sweet Vermouth, Luxardo Cherry</div></div></div>
+            <div class="mitem"><div><div class="mname">Sangria</div><div class="mdesc">Brandy, Banfi Chianti, Fresh Fruit</div></div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Kenny's Favorites</div>
+            <div class="mitem"><div><div class="mname">"Foo" Tini</div><div class="mdesc">Cucumber Vodka, Lemon Juice, Jalapeños</div></div></div>
+            <div class="mitem"><div><div class="mname">Espresso Martini</div><div class="mdesc">Grey Goose, Kahlua, Vanilla Cold Brew · Add Bourbon Cream +$1</div></div></div>
+            <div class="mitem"><div><div class="mname">Patrón Ranch Water</div><div class="mdesc">Patrón, Lime Juice, Soda · Make it Spicy: add Jalapeño</div></div></div>
+            <div class="mitem"><div><div class="mname">Frenchie</div><div class="mdesc">Tito's, Chambord, Pineapple, Prosecco</div></div></div>
+            <div class="mitem"><div><div class="mname">Homage to "Sam"</div><div class="mdesc">Knob Creek, Lemon, Honey, Ginger Beer</div></div></div>
+            <div class="mitem"><div><div class="mname">Elijah Craig Old Fashioned</div><div class="mdesc">Elijah Craig Bourbon, Simple Syrup, Luxardo Cherry, Orange, Bitters</div></div></div>
+            <div class="mitem"><div><div class="mname">The Rouge Affair</div><div class="mdesc">Grey Goose Berry Rouge, St Germain, Strawberry, Lemon, Simple Syrup</div></div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Martini Monday — $7 All Day</div>
+            <div class="mitem"><div><div class="mname">Raspberry Lemonade</div><div class="mdesc">Effen Raspberry Vodka, Limoncello, Lemon Juice</div></div></div>
+            <div class="mitem"><div><div class="mname">Gin &amp; Georgia</div><div class="mdesc">Gin, St. Germain, White Peach, Fresh Lemon Juice</div></div></div>
+            <div class="mitem"><div><div class="mname">Ruby Slipper</div><div class="mdesc">Deep Eddy Grapefruit Vodka, Fresh Grapefruit Juice</div></div></div>
+            <div class="mitem"><div><div class="mname">Rob's Pomtini</div><div class="mdesc">Vodka, Pama Liquor, Pineapple Juice</div></div></div>
+            <div class="mitem"><div><div class="mname">Make It Your Way</div><div class="mdesc">Vodka or Gin — straight up or dirty</div></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="mcat">
+            <div class="mcat-title">Italian Reds <span style="font-size:.7rem;opacity:.4">(Glass / Bottle)</span></div>
+            <div class="mitem"><div><div class="mname">Banfi, Chianti Superiore, Toscana</div></div><div class="mprice">$11 / $40</div></div>
+            <div class="mitem"><div><div class="mname">Chiarlo Barbera, D'Asti</div></div><div class="mprice">$11 / $40</div></div>
+            <div class="mitem"><div><div class="mname">Caparzo, Sangiovese, Toscana</div></div><div class="mprice">$11 / $40</div></div>
+            <div class="mitem"><div><div class="mname">Borgo Scopeto, Chianti Classico</div></div><div class="mprice">$12 / $44</div></div>
+            <div class="mitem"><div><div class="mname">Ruffino Aziano, Chianti Classico</div></div><div class="mprice">$12 / $44</div></div>
+            <div class="mitem"><div><div class="mname">Santa Margherita, Chianti</div></div><div class="mprice">$62</div></div>
+            <div class="mitem"><div><div class="mname">Sartori, Amarone, Veneto</div></div><div class="mprice">$82</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Cabernet Sauvignon</div>
+            <div class="mitem"><div><div class="mname">Line 39, North Coast, CA</div></div><div class="mprice">$11 / $40</div></div>
+            <div class="mitem"><div><div class="mname">Silver Palm, North Coast, CA</div></div><div class="mprice">$13 / $48</div></div>
+            <div class="mitem"><div><div class="mname">Freakshow, Lodi, CA</div></div><div class="mprice">$13 / $48</div></div>
+            <div class="mitem"><div><div class="mname">Oberon, Napa Valley, CA</div></div><div class="mprice">$15 / $56</div></div>
+            <div class="mitem"><div><div class="mname">Katherine Goldschmidt, Alexander Valley</div></div><div class="mprice">$16 / $60</div></div>
+            <div class="mitem"><div><div class="mname">Silver Oak, Alexander Valley, CA</div></div><div class="mprice">$125</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">White Wine &amp; Rosé</div>
+            <div class="mitem"><div><div class="mname">Zonin, Prosecco, Veneto</div></div><div class="mprice">split $11</div></div>
+            <div class="mitem"><div><div class="mname">Banfi Le Rime, Pinot Grigio, Toscana</div></div><div class="mprice">$11 / $40</div></div>
+            <div class="mitem"><div><div class="mname">Caposaldo, Moscato</div></div><div class="mprice">$12 / $44</div></div>
+            <div class="mitem"><div><div class="mname">Bieler, Rosé, Aix-en-Provence</div></div><div class="mprice">$14 / $52</div></div>
+            <div class="mitem"><div><div class="mname">Joel Gott, Sauvignon Blanc, Sonoma</div></div><div class="mprice">$11 / $40</div></div>
+            <div class="mitem"><div><div class="mname">Sea Sun by Caymus, Chardonnay</div></div><div class="mprice">$11 / $40</div></div>
+            <div class="mitem"><div><div class="mname">Sonoma-Cutrer, Chardonnay</div></div><div class="mprice">$14 / $52</div></div>
+            <div class="mitem"><div><div class="mname">Taittinger, Champagne, France</div></div><div class="mprice">$78</div></div>
+          </div>
+          <div class="mcat">
+            <div class="mcat-title">Alcohol-Free Options</div>
+            <div class="mitem"><div><div class="mname">Espresso Martini (AF)</div></div></div>
+            <div class="mitem"><div><div class="mname">Lyer's Classico Prosecco</div></div></div>
+            <div class="mitem"><div><div class="mname">Lyer's Malt &amp; Cola</div></div></div>
+            <div class="mitem"><div><div class="mname">Heineken 0.0</div></div></div>
+            <div class="mitem"><div><div class="mname">Athletic Upside Dawn Golden</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /wine -->
+
+    <!-- ── TAKE & BAKE ── -->
+    <div class="mpane" id="pane-takebake">
+      <div style="text-align:center;max-width:620px;margin:0 auto 48px">
+        <div style="font-size:3.5rem;margin-bottom:14px">🍝</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold3);margin-bottom:12px">Take &amp; Bake at Home</h3>
+        <p style="color:rgba(255,255,255,.56);line-height:1.8;font-size:.92rem">Pick up a restaurant-quality Italian dinner — ready to finish in your own oven. Includes salad and bread. Serves approximately 4 people.</p>
+      </div>
+      <div style="display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:40px">
+        <div style="border:1px solid rgba(212,168,72,.3);padding:32px 36px;text-align:center;max-width:260px">
+          <div style="font-size:2rem;margin-bottom:10px">🍗</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;margin-bottom:6px">Chicken Parmigiana</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.38)">Mozzarella, red sauce</div>
+        </div>
+        <div style="border:1px solid rgba(212,168,72,.3);padding:32px 36px;text-align:center;max-width:260px">
+          <div style="font-size:2rem;margin-bottom:10px">🫕</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;margin-bottom:6px">Baked Ziti</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.38)">Meatballs, sausage, ricotta, mozzarella</div>
+        </div>
+        <div style="border:1px solid rgba(212,168,72,.3);padding:32px 36px;text-align:center;max-width:260px">
+          <div style="font-size:2rem;margin-bottom:10px">🍝</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;margin-bottom:6px">Lasagna</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.38)">Ground beef, ricotta, mozzarella</div>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--gold3)">$69.99</div>
+        <div style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.38);margin:6px 0 20px">Includes Salad &amp; Bread · Serves ~4 People</div>
+        <a href="tel:9726619380" class="btn-solid">Call to Order: (972) 661-9380</a>
+      </div>
+    </div><!-- /takebake -->
+
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<div class="specials">
+  <h3>Specials &amp; Happy Hour</h3>
+  <p>Something to look forward to every day of the week at Kenny's.</p>
+  <div class="spec-pills">
+    <div class="spec-pill"><strong>Martini Monday</strong>$7 Martinis All Day</div>
+    <div class="spec-pill"><strong>Happy Hour</strong>Mon–Fri · 2–7 PM</div>
+    <div class="spec-pill"><strong>$7 House Wines</strong>During Happy Hour</div>
+    <div class="spec-pill"><strong>$7 Well Cocktails</strong>During Happy Hour</div>
+    <div class="spec-pill"><strong>$1 Off All Beer</strong>During Happy Hour</div>
+    <div class="spec-pill"><strong>Grey Goose on Tap</strong>Poured at 28 Degrees</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     BAR — bar1.jpg from their site
+══════════════════════════════ -->
+<section class="bar-section" id="bar">
+  <div class="wrap">
+    <div class="eyebrow">Full Service Bar</div>
+    <h2 class="heading">Craft Cocktails &amp; <em>Fine Wine</em></h2>
+
+    <div class="bar-grid">
+      <div class="bar-photo-wrap">
+        <!-- Real bar photo from kennysitalian.com -->
+        <img src="https://kennysitalian.com/wp-content/uploads/2011/12/bar1.jpg" alt="Kenny's Italian Kitchen bar" />
+        <div class="bar-badge">
+          <div class="bar-badge-num">28°</div>
+          <div class="bar-badge-lbl">Grey Goose on Tap</div>
+        </div>
+      </div>
+
+      <div class="drinks-col">
+        <h3>Signature Specialties</h3>
+        <div class="drink"><div class="drink-name">Peartini</div><div class="drink-desc">Grey Goose La Poire, St. Germain, Lemon Juice</div></div>
+        <div class="drink"><div class="drink-name">Italian Margarita</div><div class="drink-desc">Cazadores, Amaretto, Limoncello, Agave, Lime</div></div>
+        <div class="drink"><div class="drink-name">Golden Goose 75</div><div class="drink-desc">Grey Goose Strawberry Lemongrass, Lemon Juice, Simple Syrup, Prosecco</div></div>
+        <div class="drink"><div class="drink-name">Espresso Martini</div><div class="drink-desc">Grey Goose, Kahlua, Vanilla Cold Brew Coffee · Add Bourbon Cream +$1</div></div>
+        <div class="drink"><div class="drink-name">Elijah Craig Old Fashioned</div><div class="drink-desc">Elijah Craig Bourbon, Simple Syrup, Luxardo Cherry, Orange, Bitters</div></div>
+        <div class="drink"><div class="drink-name">Sangria</div><div class="drink-desc">Brandy, Banfi Chianti, Fresh Fruit</div></div>
+        <div class="drink"><div class="drink-name">Angel's Envy Manhattan</div><div class="drink-desc">Angel's Envy Bourbon, Sweet Vermouth, Luxardo Cherry</div></div>
+
+        <h3>Happy Hour</h3>
+        <div class="drink"><div class="drink-name">Monday – Friday · 2:00 PM – 7:00 PM</div><div class="drink-desc">$7 House Wines · $7 Well Cocktails · $1 Off All Beer</div></div>
+        <div class="drink"><div class="drink-name">Martini Monday — $7 All Day</div><div class="drink-desc">Every Monday: Raspberry Lemonade, Gin &amp; Georgia, Ruby Slipper, Rob's Pomtini and more</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     REVIEWS
+══════════════════════════════ -->
+<section class="reviews-section" id="reviews">
+  <div class="wrap">
+    <div class="eyebrow">What Guests Say</div>
+    <h2 class="heading">Real Reviews, <em>Real Neighbors</em></h2>
+
+    <div class="reviews-grid">
+
+      <div class="rcard">
+        <div class="stars">★★★★★</div>
+        <p class="rtext">"Definitely in the top 3 Italian kitchens in the DFW area. It doesn't matter what day of the week, it is always packed! And no wonder why — service, food, and wine options are all delightful. They really make you feel like you're in Italy."</p>
+        <div class="rauthor"><div class="rav">M</div><div><div class="rname">Maria G.</div><div class="rsrc">⭐ Yelp · Verified Diner</div></div></div>
+      </div>
+
+      <div class="rcard">
+        <div class="stars">★★★★★</div>
+        <p class="rtext">"10/10 — everything was fresh, made exactly as I ordered. I called the restaurant to say thank you and spoke to Liz, who was AMAZINGLY kind and professional. I will definitely be ordering again."</p>
+        <div class="rauthor"><div class="rav">S</div><div><div class="rname">Shay R.</div><div class="rsrc">⭐ Uber Eats · Oct 2025</div></div></div>
+      </div>
+
+      <div class="rcard">
+        <div class="stars">★★★★★</div>
+        <p class="rtext">"Crab Stuffed Mushrooms was delicious, Eggplant Parmigiana was to die for, Chicken Marsala was very good. The Tiramisu is massive. The chef even came to the table with his recommendations and delivered the plates himself."</p>
+        <div class="rauthor"><div class="rav">D</div><div><div class="rname">David K.</div><div class="rsrc">⭐ Yelp · Verified Diner</div></div></div>
+      </div>
+
+      <div class="rcard">
+        <div class="stars">★★★★★</div>
+        <p class="rtext">"We chose Kenny's for my son's 16th birthday with a table of 16 people on a busy Tuesday night. Our server Meredith was absolutely amazing — she did not miss a thing. They had GF pasta, GF bread, and even brought him a GF brownie with a candle. Kenny's made our night truly special."</p>
+        <div class="rauthor"><div class="rav">A</div><div><div class="rname">Ashley M.</div><div class="rsrc">⭐ findmeglutenfree.com</div></div></div>
+      </div>
+
+      <div class="rcard">
+        <div class="stars">★★★★★</div>
+        <p class="rtext">"The mussels were huge and the sauce was AMAZING. We ended up using the bread to sop up the sauce. For the East Coast Linguini — this is a great bang for your buck on seafood! The mussels are huge and the sauce is divine and very flavorful."</p>
+        <div class="rauthor"><div class="rav">J</div><div><div class="rname">Jennifer T.</div><div class="rsrc">⭐ Yelp · East Coast Linguini Fan</div></div></div>
+      </div>
+
+      <div class="rcard">
+        <div class="stars">★★★★★</div>
+        <p class="rtext">"What's cool about Kenny's is that if you're torn between a pasta and an entrée dish, you can ask for a half order of both. My personal favorites: the Mushroom Ravioli with a hint of truffle oil, and the Sicilian Shrimp which had nice flavor and some heat."</p>
+        <div class="rauthor"><div class="rav">K</div><div><div class="rname">Kayla W.</div><div class="rsrc">⭐ Yelp · Regular Guest</div></div></div>
+      </div>
+
+    </div>
+
+    <div class="rating-row">
+      <div class="rstat"><div class="rstat-num">4.6★</div><div class="rstat-lbl">Google Rating</div></div>
+      <div class="rstat"><div class="rstat-num">1,493</div><div class="rstat-lbl">Yelp Photos</div></div>
+      <div class="rstat"><div class="rstat-num">3,500+</div><div class="rstat-lbl">Total Reviews</div></div>
+      <div class="rstat"><div class="rstat-num">#23</div><div class="rstat-lbl">of 4,188 Dallas Restaurants</div></div>
+      <div class="rstat"><div class="rstat-num">98%</div><div class="rstat-lbl">Would Recommend</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     TEAM — liz-mardeda-300x300.jpg
+══════════════════════════════ -->
+<section class="team-section">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold2)">Meet the Team</div>
+    <h2 class="heading on-dark">The People <em>Behind Kenny's</em></h2>
+    <div class="team-grid">
+      <!-- Real photo from kennysitalian.com -->
+      <div class="team-img-wrap">
+        <img src="https://kennysitalian.com/wp-content/uploads/2019/10/liz-mardeda-300x300.jpg" alt="Liz Mardeda - Managing Partner" />
+      </div>
+      <div class="team-body">
+        <div class="team-name">Elizabeth Mardeda</div>
+        <div class="team-title">Managing Partner</div>
+        <p>Liz is here most of the time to make sure your experience is nothing short of perfect. She leads with warmth, precision, and the same "no policy" philosophy that makes Kenny's feel like home for every guest.</p>
+        <p>Chef <strong style="color:rgba(255,255,255,.75)">Kenny Bowers</strong> is in one of the kitchens. <strong style="color:rgba(255,255,255,.75)">Bob Stegall</strong> is usually at the office (because Bob's the smart one). <strong style="color:rgba(255,255,255,.75)">Clay McAfee</strong> is in one of the dining rooms. They would all love to meet you when you visit.</p>
+        <p>Celebrating a birthday or anniversary? Let us know — we make it our only policy that every guest leaves happy.</p>
+        <div class="team-email">📧 <a href="mailto:e.mardeda@kennysfood.com">e.mardeda@kennysfood.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     CATERING & TAKE & BAKE
+══════════════════════════════ -->
+<section class="cater-section" id="catering">
+  <div class="wrap">
+    <div class="eyebrow">Catering &amp; More</div>
+    <h2 class="heading">Let Kenny's Come <em>To You</em></h2>
+    <div class="cater-grid">
+
+      <div class="cater-card">
+        <h3>🍽 Full-Service Catering</h3>
+        <p>Kenny's has a full-service catering division for any size event — from intimate dinners to large corporate functions. Our team handles delivery, set up, and breakdown so you can focus on your guests.</p>
+        <p>Half pan serves ~10 · Full pan serves ~20 · Whole wheat and gluten free pasta options available.</p>
+        <div class="cater-options">
+          <div class="cater-opt">Delivery</div>
+          <div class="cater-opt">Set Up &amp; Clean Up</div>
+          <div class="cater-opt">Full Service Staffing</div>
+          <div class="cater-opt">GF Options</div>
+        </div>
+        <div class="cater-contact">
+          <div class="cater-contact-item">👤 <span>Elizabeth Mardeda, Managing Partner</span></div>
+          <div class="cater-contact-item">📞 <a href="tel:9726619380">(972) 661-9380</a></div>
+          <div class="cater-contact-item">✉️ <a href="mailto:e.mardeda@kennysfood.com">e.mardeda@kennysfood.com</a></div>
+        </div>
+        <div style="margin-top:18px">
+          <a href="mailto:e.mardeda@kennysfood.com" class="btn-solid" style="font-size:.68rem;padding:13px 28px">Get Catering Info</a>
+        </div>
+      </div>
+
+      <div class="cater-card">
+        <h3>🏠 Take &amp; Bake</h3>
+        <p>Pick up a restaurant-quality Italian dinner — ready to finish in your own oven. Perfect for family nights, dinner parties, or whenever you want Kenny's at home.</p>
+        <div class="cater-options">
+          <div class="cater-opt">Chicken Parmigiana</div>
+          <div class="cater-opt">Baked Ziti</div>
+          <div class="cater-opt">Lasagna</div>
+        </div>
+        <p>Every order includes salad and bread.</p>
+        <div class="cater-price">$69.99</div>
+        <div class="cater-price-note">Serves approximately 4 people</div>
+        <div style="margin-top:18px">
+          <a href="tel:9726619380" class="btn-solid" style="font-size:.68rem;padding:13px 28px">Call to Order</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     LOCATION — Google Map embed
+══════════════════════════════ -->
+<section class="location-section" id="location">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold2)">Visit Us</div>
+    <h2 class="heading on-dark">Find <em>Kenny's</em></h2>
+    <div class="location-grid">
+
+      <div class="loc-block">
+        <h3>Hours of Operation</h3>
+        <div class="hours-row"><span class="day">Monday</span><span class="time">11:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="day">Tuesday</span><span class="time">11:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="day">Wednesday</span><span class="time">11:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="day">Thursday</span><span class="time">11:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="day">Friday</span><span class="time">11:00 AM – 11:00 PM</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span class="time">4:00 PM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span class="time">4:00 PM – 10:00 PM</span></div>
+        <p style="font-size:.72rem;color:rgba(255,255,255,.26);font-style:italic;margin-top:14px">Happy Hour Mon–Fri 2–7 PM · Martini Monday all day · Valet available</p>
+      </div>
+
+      <div class="loc-block">
+        <h3>Contact Us</h3>
+        <div class="cinfo-item"><div class="cinfo-ico">📍</div><div>5100 Belt Line Rd, Suite 764<br>Dallas, TX 75254<br><span style="font-size:.72rem;opacity:.5">Near Montfort Dr · Valet parking available</span></div></div>
+        <div class="cinfo-item"><div class="cinfo-ico">📞</div><a href="tel:9726619380">(972) 661-9380</a></div>
+        <div class="cinfo-item"><div class="cinfo-ico">✉️</div><a href="mailto:e.mardeda@kennysfood.com">e.mardeda@kennysfood.com</a></div>
+        <div class="cinfo-item"><div class="cinfo-ico">🌐</div><a href="https://kennysitalian.com" target="_blank">kennysitalian.com</a></div>
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+          <a href="https://www.opentable.com/kennys-italian-kitchen" target="_blank" class="btn-solid" style="font-size:.65rem;padding:12px 22px">Reserve on OpenTable</a>
+          <a href="tel:9726619380" class="btn-outline" style="font-size:.65rem;padding:12px 22px;color:#fff">Call Us</a>
+        </div>
+      </div>
+
+      <div class="loc-block">
+        <h3>Find Us on the Map</h3>
+        <iframe class="map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.67!2d-96.8049!3d32.9537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c3ddddddddddd%3A0x1!2sKenny's+Italian+Kitchen+5100+Belt+Line+Rd+Dallas+TX+75254!5e0!3m2!1sen!2sus!4v1700000000000"
+          allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kenny's Italian Kitchen map">
+        </iframe>
+        <a href="https://maps.google.com/?q=Kenny%27s+Italian+Kitchen+5100+Belt+Line+Rd+Dallas+TX" target="_blank"
+           style="font-size:.64rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);text-decoration:none;display:inline-block;margin-top:10px">
+          Open in Google Maps →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     ST. JUDE STRIP
+══════════════════════════════ -->
+<div style="background:var(--brown);padding:24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap">
+  <!-- Real St. Jude badge from their site -->
+  <img src="https://kennysitalian.com/wp-content/uploads/2024/08/stjude-kb-360.png" alt="St. Jude Supporter" style="height:64px;object-fit:contain" />
+  <div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold3);margin-bottom:4px">Supporting St. Jude Children's Research Hospital</div>
+    <div style="font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:1px">100% of The Art of Chef Kenny Bowers purchase price is donated directly to St. Jude</div>
+    <div style="margin-top:10px">
+      <a href="https://www.kennybowersart.com/" target="_blank" style="font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);text-decoration:none;margin-right:16px">Shop Kenny's Art →</a>
+      <a href="https://fundraising.stjude.org/site/TR?px=8779322&fr_id=157660&pg=personal" target="_blank" style="font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none">Donate Directly →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SIBLING BRANDS
+══════════════════════════════ -->
+<div class="brands-bar">
+  <span>Also from Kenny's Restaurant Group:</span>
+  <a href="http://kennyswoodfiredgrill.com" target="_blank">
+    <img src="https://kennysitalian.com/wp-content/uploads/2022/06/Kennys-WFG-logo.png" alt="Kenny's Wood Fired Grill" />
+  </a>
+  <a href="http://kennysburgerjoint.com" target="_blank">
+    <img src="https://kennysitalian.com/wp-content/uploads/2022/06/K-Burger-Joint-logo.png" alt="Kenny's Burger Joint" />
+  </a>
+  <a href="http://kennyseastcoastpizza.com" target="_blank">
+    <img src="https://kennysitalian.com/wp-content/uploads/2022/06/KECP-Logo.png" alt="Kenny's East Coast Pizza" />
+  </a>
+</div>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://kennysitalian.com/wp-content/uploads/2020/05/italian-logo-200.png" alt="Kenny's Italian Kitchen Logo" />
+  </div>
+  <div class="footer-script">Kenny's Italian Kitchen</div>
+  <div class="footer-tagline">"Every day is a holiday and every meal is a feast!"</div>
+  <ul class="footer-nav">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#bar">Bar</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#location">Visit</a></li>
+    <li><a href="tel:9726619380">(972) 661-9380</a></li>
+  </ul>
+  <p class="footer-copy">
+    © 2025 Kenny's Italian Kitchen · 5100 Belt Line Rd, Ste 764 · Dallas, TX 75254<br>
+    Owned by Kenny Bowers, Bob Stegall &amp; Clay McAfee · Managing Partner: Liz Mardeda · feedback@kennysfood.com
+  </p>
+</footer>
+
+<script>
+function showTab(name) {
+  // Deactivate all tabs and panes
+  document.querySelectorAll('.mtab').forEach((t, i) => {
+    const names = ['lunch','dinner','wine','takebake'];
+    t.classList.toggle('active', names[i] === name);
+  });
+  document.querySelectorAll('.mpane').forEach(p => p.classList.remove('active'));
+  const pane = document.getElementById('pane-' + name);
+  if (pane) pane.classList.add('active');
+}
+</script>
+
+</body>
+</html>
